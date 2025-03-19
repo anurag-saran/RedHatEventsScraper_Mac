@@ -153,3 +153,29 @@ chmod +x $(which chromedriver)
 ```
 
 For detailed logs, check `redhat_scraper.log` in the application folder.
+
+# Work Around
+**First, let's install only the core dependencies (without PyQt5)**
+**This avoids the GUI-related installation issues**
+```bash
+pip install requests beautifulsoup4 lxml openpyxl python-dateutil selenium webdriver-manager
+
+# Navigate to the source directory
+cd /path/to/RedHatEventsScraper/source
+
+# Run the scraper in CLI mode
+python3 main.py --once
+```
+
+```bash
+# CLI options available:
+- --once: Run the scraper once and exit (recommended)
+- --batch: Run in continuous batch mode (runs on schedule)
+- --excel: Export to Excel format
+- --csv: Export to CSV format
+```
+
+
+The results will be saved to the output folder as:
+- redhat_events_latest.xlsx
+- redhat_events_latest.csv
